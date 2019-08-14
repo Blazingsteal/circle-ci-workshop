@@ -41,6 +41,4 @@ workflows:
     jobs:
       - test
       - package
-      - dockerize:
-        requires:
-          - package
+      - dockerize
