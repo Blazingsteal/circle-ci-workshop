@@ -13,11 +13,12 @@ jobs:
           path: build/test-results
     test:
       docker:
-      - image: circleci/openjdk:8-jdk
-      - run:
-          name: package
-          command: 
-            gradle jar  
+        - image: circleci/openjdk:8-jdk
+      Steps:
+        - run:
+            name: package
+            command: 
+              gradle jar  
       - store_artifacts:
           path: build/libs
           destination: prefix
