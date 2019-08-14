@@ -19,7 +19,6 @@ jobs:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
-      - checkout
       - attach_workspace:
             at: .
       - run:
@@ -33,6 +32,7 @@ jobs:
           root: .
           paths:
             - .
+      - checkout
   dockerize:
     machine: true
     steps:
