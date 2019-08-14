@@ -10,7 +10,7 @@ jobs:
           command: 
             gradle test
       - persist_to_workspace:
-          root: test
+          root: .
           paths: 
             - .
       - store_test_results:
@@ -25,7 +25,7 @@ jobs:
           command: 
             gradle jar
       - attach_workspace:
-          at: /tmp/workspace
+          at: .
       - store_artifacts:
           path: build/libs
           destination: prefix
