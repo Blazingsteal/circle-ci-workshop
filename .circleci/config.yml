@@ -11,6 +11,10 @@ jobs:
             gradle test
       - store_test_results:
           path: build/test-results
+      - persist_to_workspace:
+          root: .
+          paths: 
+            - .
   package:
     docker:
       - image: circleci/openjdk:8-jdk
