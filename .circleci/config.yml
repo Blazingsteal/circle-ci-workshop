@@ -28,7 +28,7 @@ jobs:
           paths:
             - .
   dockerize:
-    mahcine: true
+    machine: true
     steps:
       - attach_workspace:
           at: . 
