@@ -7,8 +7,7 @@ jobs:
       - checkout
       - run:
           name: test
-          command: 
-            gradle test
+          command: gradle test
       - store_test_results:
           path: build/test-results
       - persist_to_workspace:
@@ -19,20 +18,18 @@ jobs:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
-      - checkout
       - attach_workspace:
             at: .
       - run:
           name: package
-          command: 
-            gradle jar
+          command: gradle jar
       - store_artifacts:
           path: build/libs
-          destination: prefix
+          destination: build
       - persist_to_workspace:
           root: .
           paths:
-            - .
+            - build/libs
   dockerize:
     machine: true
     steps:
@@ -46,5 +43,9 @@ workflows:
   do_stuff:
     jobs:
       - test
-      - package
-      - dockerize
+      - package:
+          requires:
+            - test
+      - dockerize:
+          requires:
+            - package
